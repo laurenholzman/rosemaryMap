@@ -1,11 +1,325 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
+    <title>Rosemary Map</title>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <!-- MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+    <style>
+
+
+       body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+        #title {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            z-index: 1000;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        #contact-box {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        #email-icon {
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 20px;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        #contact-form {
+            display: none;
+            position: absolute;
+            bottom: 50px;
+            right: 0;
+            background: white;
+            padding: 10px;
+            width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        #contact-box:hover #contact-form {
+            display: block;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            width: 100%;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        #contact-form button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #rosemary-info {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px;
+            width: 300px;
+            height: 400px;
+            overflow-y: scroll;
+            font-size: 14px;
+            z-index: 1000;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            line-height: 1.4;
+        }
+
+        #title {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 6px 12px;
+            font-size: 18px;
+            z-index: 1000;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            cursor: pointer; /* makes it look clickable */
+            transition: all 0.2s ease;
+        }
+
+            #title:hover {
+                text-decoration: underline;
+                background: #f0f0f0;
+            }
+            #box {
+                width:100%;
+                height:100vh;
+                position: relative
+            }
+    </style>
 </head>
 <body>
+    <div id="box">
+        <div id="title">🌿 Rosemary Map</div>
+        <div id="rosemary-info">
+            <header>
+                <h1>Rosemary (Salvia rosmarinus)</h1>
+                <p><em>Commonly known as rosemary, it is a shrub with fragrant, evergreen, needle-like leaves and colorful flowers.</em></p>
+            </header>
+
+            <section id="description">
+                <h2>Description</h2>
+                <p>Rosemary has a fibrous root system and forms an aromatic evergreen shrub. The plant can reach heights of up to 1.8 meters (6 feet), with needle-like leaves and flowers that range in color from white to blue.</p>
+            </section>
+
+            <section id="taxonomy">
+                <h2>Taxonomy</h2>
+                <p>Salvia rosmarinus was formerly placed in the genus Rosmarinus. The genus name was given by Carl Linnaeus in the 18th century.</p>
+            </section>
+
+            <section id="etymology">
+                <h2>Etymology</h2>
+                <p>The botanical name "Rosmarinus" is derived from Latin, meaning "Sea Dew". Rosemary thrives best by the sea.</p>
+            </section>
+
+            <section id="distribution">
+                <h2>Distribution and Habitat</h2>
+                <p>Native to the Mediterranean region, rosemary was brought to England by the Romans and later spread across the world. It is hardy in cooler climates and drought-resistant.</p>
+            </section>
+
+            <section id="cultivation">
+                <h2>Cultivation</h2>
+                <p>Rosemary is an ornamental plant, commonly used in gardens, especially in regions with Mediterranean climates. It is easy to grow and pest-resistant.</p>
+            </section>
+
+            <section id="cultivars">
+                <h2>Cultivars</h2>
+                <ul>
+                    <li><strong>'Arp'</strong>: Cold-hardy, lemon-scented.</li>
+                    <li><strong>'Blue Rain'</strong>: Pink flowers.</li>
+                    <li><strong>'Tuscan Blue'</strong>: Upright form.</li>
+                    <li>... (continue list of cultivars)</li>
+                </ul>
+            </section>
+
+            <section id="uses">
+                <h2>Uses</h2>
+                <h3>Culinary</h3>
+                <p>Rosemary leaves are commonly used in cooking for flavoring stews, meats, and marinades.</p>
+
+                <h3>Fragrance</h3>
+                <p>Rosemary essential oil is used in perfumes, shampoos, and aromatherapy.</p>
+
+                <h3>Phytochemicals</h3>
+                <p>The essential oil contains several phytochemicals such as camphor, rosmarinic acid, and carnosic acid.</p>
+            </section>
+
+            <section id="cultural-significance">
+                <h2>Cultural Significance</h2>
+                <p>Rosemary has been used in ceremonies and traditions, such as memorials and weddings, and is mentioned in literature by Shakespeare.</p>
+            </section>
+
+            <footer>
+                <p>For more information, visit <a href="https://en.wikipedia.org/wiki/Rosemary" target="_blank">Wikipedia - Rosemary</a>.</p>
+            </footer>
+        </div>
+        <label style="position:absolute; top:90px; left:10px; z-index:1000; background:white; padding:6px; border-radius:4px; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+            <input type="checkbox" id="cluster-toggle" checked>
+            Use Marker Clustering
+        </label>
+        <div id="map"></div>
+        <div id="contact-box">
+            <div id="email-icon">📬</div>
+            <form id="contact-form" action="https://formspree.io/f/xrbqqnzr" method="POST">
+                <input type="email" name="email" placeholder="Your email" required><br>
+                <textarea name="message" placeholder="New coordinates and/or any comments" rows="3" required></textarea><br>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <!-- MarkerCluster JS -->
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([47.643952, -122.335232], 12); // Seattle
+
+        // Base layers
+        const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        });
+
+        const topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            attribution: 'Map data: &copy; OpenTopoMap contributors'
+        });
+
+        var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        // Layer control
+        const baseMaps = {
+            "Gray": CartoDB_Positron,
+            "Streets": streets,
+            "Topographic": topo
+            
+        };
+       // L.control.layers(baseMaps).addTo(map);
+
+        // Search control
+        L.Control.geocoder({
+            defaultMarkGeocode: true
+        }).addTo(map);
+
+
+        let rosemaryData, normalLayer, clusterLayer;
+
+        function createRosemaryLayer(data, clustered) {
+            const geoJsonLayer = L.geoJSON(data, {
+                onEachFeature: function (feature, layer) {
+                    const props = feature.properties;
+                    const coords = layer.getLatLng();
+                    const googleMapsUrl = `https://www.google.com/maps/place/${coords.lat},${coords.lng}`;
+                    const popup = `
+                        <strong>${props.plant_type}</strong><br>
+                            ${props.notes}<br><br>
+                            ${props.image ? `<img src="${props.image}" alt="Rosemary image" style="width:100%;max-width:200px;"><br><br>` : ''}
+                            <a href="${googleMapsUrl}" target="_blank">${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)}</a>
+                            `;
+                    layer.bindPopup(popup);
+                },
+                pointToLayer: (feature, latlng) => L.marker(latlng)
+            });
+
+            if (clustered) {
+                const clusterGroup = L.markerClusterGroup();
+                clusterGroup.addLayer(geoJsonLayer);
+                return clusterGroup;
+            } else {
+                return geoJsonLayer;
+            }
+        }
+
+        fetch('rosemary.geojson')
+            .then(res => res.json())
+            .then(data => {
+                rosemaryData = data;
+
+                clusterLayer = createRosemaryLayer(rosemaryData, true);
+                normalLayer = createRosemaryLayer(rosemaryData, false);
+
+                clusterLayer.addTo(map); // default view is clustered
+
+                // Toggle control
+                document.getElementById('cluster-toggle').addEventListener('change', function () {
+                    if (this.checked) {
+                        map.removeLayer(normalLayer);
+                        map.addLayer(clusterLayer);
+                    } else {
+                        map.removeLayer(clusterLayer);
+                        map.addLayer(normalLayer);
+                    }
+                });
+
+                const overlays = {
+                    "Rosemary Bushes (clustered)": clusterLayer,
+                    "Rosemary Bushes (normal)": normalLayer
+                };
+                L.control.layers(baseMaps, overlays).addTo(map);
+            })
+            .catch(err => console.error('Error loading GeoJSON:', err));
+        L.control.scale().addTo(map);
+
+
+        document.getElementById('title').addEventListener('click', function () {
+            const infoBox = document.getElementById('rosemary-info');
+            infoBox.style.display = (infoBox.style.display === 'block') ? 'none' : 'block';
+        });
+    </script>
 
 </body>
 </html>

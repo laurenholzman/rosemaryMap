@@ -1,0 +1,212 @@
+
+  {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-122.2945187,47.5926823 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Rosie the dog included as a bonus.",
+          "image": "images/streve_1.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.2946200, 47.5921985 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Another one"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.2952050,47.5921802]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "2 plants."
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.2956312, 47.5928198 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Big boy."
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.3466703, 47.7200654]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Lowe's at 125th...",
+          "image":  "images/lowes.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.3023511,47.6206075]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": ""
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.2781811, 47.5603824 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": ""
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.34014496432852, 47.684839987016574]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Big honker.",
+          "image": "images/grace.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.306713, 47.664929 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "NW corner of 50th and 20th",
+          "image": "images/50-20.png"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.307262, 47.665008 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "NW corner of 50th and 19th",
+          "image": "images/50-19.png"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.306457, 47.662204]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "20th ave between 45th and 47th",
+          "image": "images/20-45.png"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.314090, 47.666916 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Brooklyn Ave between 52nd and 55th on the east side of Brookln",
+          "image": "images/brook-52.png"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.308355, 47.667982 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "18th ave between 52nd and 55th but closer to 55th on the west side of the street",
+          "image": "images/18-52.png"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.358931, 47.705170 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "A bunch of bushed between 2nd and 1st"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.3403570,47.6522250]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": ""
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.3001416,47.6281909 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "The first sighting from the spoke folk"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.350930, 47.660128 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Used to be a big boy, has since been trimmed :("
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -122.355497, 47.661309 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Three big bushes"
+        }
+      }
+    ]
+  }
