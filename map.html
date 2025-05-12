@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 
+
+   
+
     <style>
 
 
-       body {
+        body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -128,11 +131,12 @@
                 text-decoration: underline;
                 background: #f0f0f0;
             }
-            #box {
-                width:100%;
-                height:100vh;
-                position: relative
-            }
+
+        #box {
+            width: 100%;
+            height: 100vh;
+            position: relative
+        }
     </style>
 </head>
 <body>
@@ -141,59 +145,31 @@
         <div id="rosemary-info">
             <header>
                 <h1>Rosemary (Salvia rosmarinus)</h1>
-                <p><em>Commonly known as rosemary, it is a shrub with fragrant, evergreen, needle-like leaves and colorful flowers.</em></p>
+                <p>Rosemary is everyone's favorite herb- used in all sorts of dishes. Personally, I always remember I need rosemary once I've already started cooking/baking (usually bread). This map intends to solve this dilemma by giving people locations to find rosemary throughout the city.</p>
             </header>
 
             <section id="description">
-                <h2>Description</h2>
-                <p>Rosemary has a fibrous root system and forms an aromatic evergreen shrub. The plant can reach heights of up to 1.8 meters (6 feet), with needle-like leaves and flowers that range in color from white to blue.</p>
+                <h1>A bit more about rosemary! </h1>
+            </section>
+
+            <section id="description2">
+                <h2>Description </h2>
+                <p>This aromatic evergreen shrub can live as long as 35 years! </p>
             </section>
 
             <section id="taxonomy">
                 <h2>Taxonomy</h2>
-                <p>Salvia rosmarinus was formerly placed in the genus Rosmarinus. The genus name was given by Carl Linnaeus in the 18th century.</p>
+                <p>Salvia rosmarinus was formerly placed in the genus Rosmarinus. The genus name was given by Carl Linnaeus in the 18th century. </p>
             </section>
 
             <section id="etymology">
                 <h2>Etymology</h2>
-                <p>The botanical name "Rosmarinus" is derived from Latin, meaning "Sea Dew". Rosemary thrives best by the sea.</p>
+                <p>The botanical name "Rosmarinus" is derived from two Latin words [<i>ros marinus</i>], meaning "Sea Dew". Rosemary thrives best by the sea.</p>
             </section>
 
             <section id="distribution">
                 <h2>Distribution and Habitat</h2>
-                <p>Native to the Mediterranean region, rosemary was brought to England by the Romans and later spread across the world. It is hardy in cooler climates and drought-resistant.</p>
-            </section>
-
-            <section id="cultivation">
-                <h2>Cultivation</h2>
-                <p>Rosemary is an ornamental plant, commonly used in gardens, especially in regions with Mediterranean climates. It is easy to grow and pest-resistant.</p>
-            </section>
-
-            <section id="cultivars">
-                <h2>Cultivars</h2>
-                <ul>
-                    <li><strong>'Arp'</strong>: Cold-hardy, lemon-scented.</li>
-                    <li><strong>'Blue Rain'</strong>: Pink flowers.</li>
-                    <li><strong>'Tuscan Blue'</strong>: Upright form.</li>
-                    <li>... (continue list of cultivars)</li>
-                </ul>
-            </section>
-
-            <section id="uses">
-                <h2>Uses</h2>
-                <h3>Culinary</h3>
-                <p>Rosemary leaves are commonly used in cooking for flavoring stews, meats, and marinades.</p>
-
-                <h3>Fragrance</h3>
-                <p>Rosemary essential oil is used in perfumes, shampoos, and aromatherapy.</p>
-
-                <h3>Phytochemicals</h3>
-                <p>The essential oil contains several phytochemicals such as camphor, rosmarinic acid, and carnosic acid.</p>
-            </section>
-
-            <section id="cultural-significance">
-                <h2>Cultural Significance</h2>
-                <p>Rosemary has been used in ceremonies and traditions, such as memorials and weddings, and is mentioned in literature by Shakespeare.</p>
+                <p>Native to the Mediterranean region as well as Portugal and northwestern Spain, and is mentioned as early as 5000 BCE. It is hardy in cooler climates and drought-resistant.</p>
             </section>
 
             <footer>
@@ -214,6 +190,8 @@
             </form>
         </div>
     </div>
+
+    <!-- Load the javascript libraries you're going to be using'-->
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
@@ -221,10 +199,13 @@
     <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
     <script>
-        // Initialize the map
+        // Initialize the map and define the center and zoom (higher is more zoomed in)
+        // "L" is the global namespace object
         const map = L.map('map').setView([47.643952, -122.335232], 12); // Seattle
 
         // Base layers
+        //You only need one (or I suppose non if you're weird)
+        //but here I am defining the variables for more to add a toggle between them
         const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; OpenStreetMap contributors'
@@ -235,44 +216,88 @@
             attribution: 'Map data: &copy; OpenTopoMap contributors'
         });
 
-        var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        //the "addTo(map)", as you might guess is the one that is displayed by default
+        const CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20
         }).addTo(map);
 
+        //token needed to use mapbox layers
+        var mapboxAccessToken = "pk.eyJ1IjoidGhlaGVsbG9tYXJ0aWFuIiwiYSI6ImNsMDc1NXBuazF6bXczZXJzd2ZseXB4MDgifQ.gQNA94PswehVHrpv6cBBSw";
+
+
+        const mapbox = L.tileLayer(`https://api.mapbox.com/styles/v1/thehellomartian/cmalih03v013d01sn5wk711jv/tiles/{z}/{x}/{y}?access_token=${mapboxAccessToken}`, {
+            attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: mapboxAccessToken
+        })
+
         // Layer control
         const baseMaps = {
             "Gray": CartoDB_Positron,
             "Streets": streets,
-            "Topographic": topo
+            "Topographic": topo,
+            "Mapbox": mapbox
             
         };
-       // L.control.layers(baseMaps).addTo(map);
 
-        // Search control
+
+        // Search control, allows you to search for a place
         L.Control.geocoder({
             defaultMarkGeocode: true
         }).addTo(map);
 
-
+        //initialize the variables
         let rosemaryData, normalLayer, clusterLayer;
 
+        //this just creates the two layers so you can either have them clustered or not
         function createRosemaryLayer(data, clustered) {
+
             const geoJsonLayer = L.geoJSON(data, {
                 onEachFeature: function (feature, layer) {
-                    const props = feature.properties;
+                    const props = feature.properties; //similar to the attributes in shapefiles
                     const coords = layer.getLatLng();
-                    const googleMapsUrl = `https://www.google.com/maps/place/${coords.lat},${coords.lng}`;
+                    const googleMapsUrl = `https://www.google.com/maps/place/${coords.lat},${coords.lng}`; //defines the link for the location based on the format of google maps links
                     const popup = `
                         <strong>${props.plant_type}</strong><br>
                             ${props.notes}<br><br>
                             ${props.image ? `<img src="${props.image}" alt="Rosemary image" style="width:100%;max-width:200px;"><br><br>` : ''}
                             <a href="${googleMapsUrl}" target="_blank">${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)}</a>
                             `;
-                    layer.bindPopup(popup);
+                    layer.bindPopup(popup); //defines the popup that will show up when the point is clicked
                 },
-                pointToLayer: (feature, latlng) => L.marker(latlng)
+                pointToLayer: function (feature, latlng) {
+                    let size;
+
+                    switch (feature.properties.status) {
+                        case 'small':
+                            size= 6;
+                            color= 'red';
+                            break;
+                        case 'medium':
+                            size= 8;
+                            color= 'yellow';
+                            break;
+                        case 'large':
+                            size= 10;
+                            color= 'green';
+                            break;
+                        default:
+                            size = 6;
+                            color = 'grey';
+                    }
+                    return L.circleMarker(latlng, {
+                        radius: size,
+                        fillColor: color,
+                        color: '#333',
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                    });
+
+                }
             });
 
             if (clustered) {
@@ -284,17 +309,20 @@
             }
         }
 
-        fetch('rosemary.geojson')
+        fetch('rosemary.geojson') //fetch is used to load the geojson layers
             .then(res => res.json())
             .then(data => {
                 rosemaryData = data;
 
-                clusterLayer = createRosemaryLayer(rosemaryData, true);
+                //similar to the basemaps, we define both layers and then only add one to the map
+                clusterLayer = createRosemaryLayer(rosemaryData, true); 
                 normalLayer = createRosemaryLayer(rosemaryData, false);
 
                 clusterLayer.addTo(map); // default view is clustered
 
                 // Toggle control
+                //in the CSS and html, we defined an element with an ID of 'cluster-toggle'
+                //We are adding a listener to it so the map knows to change the layer when something in the toggle changes
                 document.getElementById('cluster-toggle').addEventListener('change', function () {
                     if (this.checked) {
                         map.removeLayer(normalLayer);
@@ -309,12 +337,55 @@
                     "Rosemary Bushes (clustered)": clusterLayer,
                     "Rosemary Bushes (normal)": normalLayer
                 };
-                L.control.layers(baseMaps, overlays).addTo(map);
+                L.control.layers(baseMaps, overlays).addTo(map); //this is the control for the basemaps and the layers in the top right
             })
             .catch(err => console.error('Error loading GeoJSON:', err));
         L.control.scale().addTo(map);
 
+        //Legend stuff 
+        const legend = L.control({ position: 'bottomleft' });
 
+        legend.onAdd = function (map) {
+            const div = L.DomUtil.create('div', 'info legend');
+            const statuses = ['small', 'medium', 'large', 'unknown'];
+            const labels = {
+                small: 'Small',
+                medium: 'Medium',
+                large: 'Large (or multiple)',
+                unknown: 'Unknown'
+            };
+            const colors = {
+                small: 'red',
+                medium: 'yellow',
+                large: 'green',
+                unknown: 'grey'
+            };
+            const sizes = {
+                small: 6,
+                medium: 8,
+                large: 10,
+                unknown: 6
+            };
+
+            div.innerHTML += '<strong>Size</strong><br>';
+            statuses.forEach(status => {
+                const color = colors[status];
+                const size = sizes[status];
+
+                div.innerHTML += `
+            <svg width="20" height="20" style="vertical-align: middle; margin-right: 5px;">
+                <circle cx="10" cy="10" r="${size}" fill="${color}" stroke="#333" stroke-width="1" />
+            </svg>
+            ${labels[status]}<br>`;
+            });
+
+            return div;
+        };
+
+        legend.addTo(map);
+
+        //similar to above, we add a listener to the title so that, when clicked,
+        //it displays the text that we defined in the 'rosemary-info' div box
         document.getElementById('title').addEventListener('click', function () {
             const infoBox = document.getElementById('rosemary-info');
             infoBox.style.display = (infoBox.style.display === 'block') ? 'none' : 'block';

@@ -1,0 +1,45 @@
+---
+title: "Rosemary Map"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(leaflet)
+library(jsonlite)
+
+setwd("C:\\Users\\hello\\source\\repos\\rosemaryMap")
+
+# Load GeoJSON
+rosemaryData <- fromJSON("rosemary.geojson", simplifyVector = FALSE)
+features <- rosemaryData$features
+
+# Extract data
+lngs <- sapply(features, function(f) f$geometry$coordinates[[1]])
+lats <- sapply(features, function(f) f$geometry$coordinates[[2]])
+plant_type <- sapply(features, function(f) f$properties$plant_type)
+notes <- sapply(features, function(f) f$properties$notes)
+images <- sapply(features, function(f) f$properties$image)
+
+# Popup HTML
+popups <- mapply(function(pt, note, lat, lng, img) {
+  paste0(
+    "<b>Plant Type:</b> ", pt, "<br>",
+    "<b>Notes:</b> ", note, "<br>",
+    "<b>Coordinates:</b> ", lat, ", ", lng, "<br>",
+    "<b>Google Maps Link:</b> <a href='https://www.google.com/maps/place/",
+    lat, ",", lng, "' target='_blank'>Open in Maps</a><br>",
+    if (!is.null(img) && img != "") {
+      paste0("<br><img src='", img, "' style='width:100%;max-width:200px;'>")
+    } else ""
+  )
+}, plant_type, notes, lats, lngs, images, SIMPLIFY = FALSE)
+
+# Create leaflet map
+leaflet() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  setView(lng = -122.335232, lat = 47.643952, zoom = 12) %>%
+  addMarkers(lng = lngs, lat = lats, popup = lapply(unname(popups), htmltools::HTML))
+
+```
+ 
+ 

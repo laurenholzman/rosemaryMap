@@ -6,12 +6,14 @@
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [-122.2945187,47.5926823 ]
+          "coordinates": [ -122.2945187, 47.5926823 ],
+          "status":  "unknown"
         },
         "properties": {
           "plant_type": "Rosemary",
           "notes": "Rosie the dog included as a bonus.",
-          "image": "images/streve_1.jpg"
+          "image": "images/streve_1.jpg",
+          "status": "small"
         }
       },
       {
@@ -22,7 +24,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "Another one"
+          "notes": "Another one",
+          "status": "unknown"
         }
       },
       {
@@ -33,7 +36,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "2 plants."
+          "notes": "2 plants.",
+          "status": "medium"
         }
       },
       {
@@ -44,7 +48,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "Big boy."
+          "notes": "Big boy.",
+          "status": "large"
         }
       },
       {
@@ -56,7 +61,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "Lowe's at 125th...",
-          "image":  "images/lowes.jpg"
+          "image": "images/lowes.jpg",
+          "status": "large"
         }
       },
       {
@@ -67,7 +73,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": ""
+          "notes": "",
+          "status": "unknown"
         }
       },
       {
@@ -78,7 +85,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": ""
+          "notes": "",
+          "status": "unknown"
         }
       },
       {
@@ -90,7 +98,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "Big honker.",
-          "image": "images/grace.jpg"
+          "image": "images/grace.jpg",
+          "status": "large"
         }
       },
       {
@@ -102,7 +111,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "NW corner of 50th and 20th",
-          "image": "images/50-20.png"
+          "image": "images/50-20.png",
+          "status": "large"
         }
       },
       {
@@ -114,7 +124,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "NW corner of 50th and 19th",
-          "image": "images/50-19.png"
+          "image": "images/50-19.png",
+          "status": "medium"
         }
       },
       {
@@ -126,7 +137,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "20th ave between 45th and 47th",
-          "image": "images/20-45.png"
+          "image": "images/20-45.png",
+          "status": "large"
         }
       },
       {
@@ -138,7 +150,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "Brooklyn Ave between 52nd and 55th on the east side of Brookln",
-          "image": "images/brook-52.png"
+          "image": "images/brook-52.png",
+          "status": "large"
         }
       },
       {
@@ -150,7 +163,8 @@
         "properties": {
           "plant_type": "Rosemary",
           "notes": "18th ave between 52nd and 55th but closer to 55th on the west side of the street",
-          "image": "images/18-52.png"
+          "image": "images/18-52.png",
+          "status": "large"
         }
       },
       {
@@ -161,7 +175,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "A bunch of bushed between 2nd and 1st"
+          "notes": "A bunch of bushes between 2nd and 1st",
+          "status": "large"
         }
       },
       {
@@ -172,7 +187,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": ""
+          "notes": "",
+          "status": "unknown"
         }
       },
       {
@@ -183,7 +199,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "The first sighting from the spoke folk"
+          "notes": "The first sighting from the spoke folk",
+          "status": "unknown"
         }
       },
       {
@@ -194,7 +211,8 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "Used to be a big boy, has since been trimmed :("
+          "notes": "Used to be a big boy, has since been trimmed :(",
+          "status": "medium"
         }
       },
       {
@@ -205,7 +223,21 @@
         },
         "properties": {
           "plant_type": "Rosemary",
-          "notes": "Three big bushes"
+          "notes": "Three big bushes",
+          "status": "large"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ -123.0307301, 48.5209236 ]
+        },
+        "properties": {
+          "plant_type": "Rosemary",
+          "notes": "Wedding rosemary!",
+          "image": "images/wedding_streve.jpg",
+          "status": "large"
         }
       }
     ]
