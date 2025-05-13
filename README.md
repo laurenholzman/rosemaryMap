@@ -4,3 +4,4 @@ This is purely a fun project aimed to be a way to mess around with different lea
 
 The Rmd version is not working as of now, I need to fix that. The map2 is a simplified version of map.html that is likely an easier launching point and template for future maps. 
 
+In short, you can ignore all files except the html file you want, the geojson file, and if needed, the folder of image files. 
